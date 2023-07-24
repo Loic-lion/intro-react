@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+body {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(236, 237, 238);
+}
+body #root {
+  background-color: rgb(253, 254, 255);
+  width: 350px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px 0px;
+}
+body #root .title {
+  background-color: rgb(70, 131, 224);
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px 0px 5px 0px;
+}
+body #root .title h1 {
+  color: aliceblue;
+}
+body #root .input__new {
+  margin: 20px 0px 15px 20px;
+  padding: 10px;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid rgb(70, 131, 224);
+  background-color: rgba(70, 131, 224, 0.089);
+}
+body #root .button__new {
+  color: white;
+  padding: 10px;
+  border-radius: 0px 10px 10px 0px;
+  border: 1px solid rgb(70, 131, 224);
+  background-color: rgb(70, 131, 224);
+}
+body #root .button__new:hover {
+  background-color: rgb(32, 67, 119);
+  border: 1px solid rgb(32, 67, 119);
+}
+body #root hr {
+  border: 1px solid rgba(70, 131, 224, 0.389);
+}
+body #root .container__todos__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+body #root .container__todos__title h2 {
+  font-size: 30px;
+  margin: 0px 10px 0px 20px;
+}
+body #root .container__todos__title div {
+  margin-top: 6px;
+}/*# sourceMappingURL=App.css.map */

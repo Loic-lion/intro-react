@@ -1,25 +1,65 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import ToDoList from "./ToDoList";
+import { v4 as uuidv4 } from "uuid";
+
+const LOCAL_STORAGE_KEY = "todoApp.todos";
 
 function App() {
-  const [todos, setTodos] = useState([{ id: 1, name: "Learn React", complete: false}]);
-  const todoNameRef = useRef()
-  
+  const [todos, setTodos] = useState([]);
+  const todoNameRef = useRef();
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedTodos) setTodos((prevTodos) => [...prevTodos, ...storedTodos]);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
+
   function handleAddTodo(e) {
-    const name = todoNameRef.current.value
-    if (name === '') return
+    const name = todoNameRef.current.value;
+    if (name === "") return;
+    setTodos((prevTodos) => {
+      return [...prevTodos, { id: uuidv4(), name: name, complete: false }];
+    });
+    todoNameRef.current.value = null;
   }
-  
+
+  function handleCleartodos() {
+    const newTodos = todos.filter((todo) => !todo.complete);
+    setTodos(newTodos);
+  }
+
+  function toggleChecked(id) {
+    const newTodos = [...todos];
+    const todo = newTodos.find((todo) => todo.id === id);
+    todo.complete = !todo.complete;
+    setTodos(newTodos);
+  }
+
   return (
     <>
-      <input ref={todoNameRef} type="text" placeholder="type a new todo" />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <button>Clear Completed</button>
+      <div class="title">
+        <h1>My Todo App</h1>
+      </div>
+      <input
+        class="input__new"
+        ref={todoNameRef}
+        type="text"
+        placeholder="type a new todo"
+      />
+      <button class="button__new" onClick={handleAddTodo}>
+        Add Todo
+      </button>
       <hr></hr>
-      <h2>Todos</h2>
-      <div>0 left to do</div>
-      <ToDoList todos={todos} />
+      <div class="container__todos__title">
+        <h2>Todos</h2>
+        <div>( {todos.filter((todo) => !todo.complete).length} left to do)</div>
+      </div>
+      <button class="button__new" onClick={handleCleartodos}>Clear Completed</button>
+      <ToDoList todos={todos} toggleChecked={toggleChecked} />
     </>
   );
 }
