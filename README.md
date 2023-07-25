@@ -1,4 +1,4 @@
-# Intro-reat
+# Intro-react
 ## Projet solo
 __Création d'une todo list.__
 * 1 jours de travail (24/07/2023 )
