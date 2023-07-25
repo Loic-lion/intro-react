@@ -5,15 +5,13 @@ export default function Todo({ todo, toggleChecked }) {
     toggleChecked(todo.id);
   }
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={todo.complete}
-          onChange={handleTodoClick}
-        />
-        {todo.name}
-      </label>
+    <div className="container__todos__new__element">
+      <input
+        type="checkbox"
+        checked={todo.complete}
+        onChange={handleTodoClick}
+      />
+      {todo.name}
     </div>
   );
 }

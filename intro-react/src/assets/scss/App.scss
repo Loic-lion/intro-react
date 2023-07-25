@@ -54,5 +54,26 @@ body {
         margin-top: 6px;
       }
     }
+    .container__todos__new {
+      width: 350px;
+      height: 300px;
+      margin-top: 20px;
+      overflow-x: scroll;
+      &__element {
+        animation: myAnim 1s ease 0s 1 normal forwards;
+        margin: 0px 0px 15px 20px;
+      }
+      @keyframes myAnim {
+        0% {
+          opacity: 0;
+          transform: translateX(250px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
   }
 }
